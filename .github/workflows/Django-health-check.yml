@@ -18,7 +18,7 @@ jobs:
         image: postgres:13  # Set up a PostgreSQL service
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: m4st3r
+          POSTGRES_PASSWORD: postgres
           POSTGRES_DB: test_db
         ports:
           - 5432:5432
@@ -29,7 +29,7 @@ jobs:
           --health-retries 5
 
     env:
-      DATABASE_URL: postgres://postgres:m4st3r@13.60.180.237:5432/test_db  # Database connection string
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/test_db  # Database connection string
 
     steps:
     - name: Checkout code
@@ -58,4 +58,4 @@ jobs:
     - name: Health check with curl
       run: |
         sleep 10  # Wait a few seconds for the server to start
-        curl --fail http://13.49.68.114:8000  # Check if the Django site is up
+        curl --fail http://localhost:8000  # Check if the Django site is up
