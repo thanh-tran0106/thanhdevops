@@ -29,7 +29,7 @@ jobs:
           --health-retries 5
 
     env:
-      DATABASE_URL: postgres://postgres:postgres@localhost:5432/test_db  # Database connection string
+      DATABASE_URL: postgres://postgres:m4st3r@localhost:5432/test_db  # Database connection string
 
     steps:
     - name: Checkout code
