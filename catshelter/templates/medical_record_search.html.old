@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Medical Records</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Search Medical Records</h1>
+        <form method="get" class="form-inline mt-3 mb-3">
+            <div class="form-group">
+                <label for="feline_id" class="mr-2">Cat ID:</label>
+                <input type="number" id="feline_id" name="feline_id" class="form-control mr-2" value="{{ form.feline_id.value }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>Record ID</th>
+                    <th>Checkup Date</th>
+                    <th>Treatment</th>
+                    <th>Doctor Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in results %}
+                <tr>
+                    <td>{{ record.record_id }}</td>
+                    <td>{{ record.checkupdate }}</td>
+                    <td>{{ record.treatment }}</td>
+                    <td>{{ record.doctor_name }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No medical records found for this cat.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+Setting up watches.  Beware: since -r was given, this may take a while!
+Watches established.
+sending incremental file list
+./
+b.txt
+
+sent 182 bytes  received 38 bytes  146.67 bytes/sec
+total size is 1,225,798  speedup is 5,571.81
+sending incremental file list
+./
+august.jpg
+
+sent 299,371 bytes  received 38 bytes  199,606.00 bytes/sec
+total size is 1,524,889  speedup is 5.09
+sending incremental file list
+
+sent 164 bytes  received 12 bytes  352.00 bytes/sec
+total size is 1,524,889  speedup is 8,664.14
+sending incremental file list
+./
+
+sent 147 bytes  received 19 bytes  110.67 bytes/sec
+total size is 1,524,889  speedup is 9,186.08
+sending incremental file list
+./
+bong.jpeg
+
+sent 37,782 bytes  received 38 bytes  25,213.33 bytes/sec
+total size is 1,562,447  speedup is 41.31
+sending incremental file list
+
+sent 166 bytes  received 12 bytes  356.00 bytes/sec
+total size is 1,562,447  speedup is 8,777.79
+sending incremental file list
+./
+bong2.jpg
+
+sent 247,895 bytes  received 38 bytes  165,288.67 bytes/sec
+total size is 1,810,048  speedup is 7.30
+sending incremental file list
+
+sent 191 bytes  received 12 bytes  406.00 bytes/sec
+total size is 1,810,048  speedup is 8,916.49

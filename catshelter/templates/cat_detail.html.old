@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ cat.name }} - Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">{{ cat.name }} - Details</h1>
+        <div class="card mb-4">
+            {% if cat.photo %}
+            <img src="{{ cat.photo.url }}" class="card-img-top" alt="Photo of {{ cat.name }}">
+            {% else %}
+            <img src="https://via.placeholder.com/300" class="card-img-top" alt="No photo available">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ cat.name }}</h5>
+                <p class="card-text"><strong>Breed:</strong> {{ cat.breed }}</p>
+                <p class="card-text"><strong>Coloration:</strong> {{ cat.coloration }}</p>
+                <p class="card-text"><strong>Age:</strong> {{ cat.age }}</p>
+                <p class="card-text"><strong>Sex:</strong> {{ cat.sex }}</p>
+                <p class="card-text"><strong>Favorite Toy:</strong> {{ cat.fav_toy }}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

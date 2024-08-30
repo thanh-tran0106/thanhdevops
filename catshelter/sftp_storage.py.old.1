@@ -1,0 +1,35 @@
+# sftp_storage.py
+from django.core.files.storage import Storage
+import paramiko
+from django.conf import settings
+
+class SFTPStorage(Storage):
+    def __init__(self, *args, **kwargs):
+        self.client = paramiko.SFTPClient.from_transport(
+            paramiko.Transport((settings.SFTP_HOST, settings.SFTP_PORT))
+        )
+        self.client.connect(username=settings.SFTP_USER, password=settings.SFTP_PASSWORD)
+        self.transport = self.client.get_transport()
+        super().__init__(*args, **kwargs)
+
+    def _open(self, name, mode='rb'):
+        return self.client.file(name, mode)
+
+    def _save(self, name, content):
+        with self.client.file(name, 'wb') as f:
+            for chunk in content.chunks():
+                f.write(chunk)
+        return name
+
+    def url(self, name):
+        return f"{settings.MEDIA_URL}{name}"
+
+    def exists(self, name):
+        try:
+            self.client.stat(name)
+            return True
+        except FileNotFoundError:
+            return False
+
+    def delete(self, name):
+        self.client.remove(name)

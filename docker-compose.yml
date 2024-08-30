@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=thanhdevops.settings
+    networks:
+      - webnet
+    volumes:
+      - /home/ubuntu/thanhdevops/media/cats_photos:/app/media/cats_photos
+
+networks:
+  webnet:
+    driver: bridge

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home & Feline Data</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+        .mt-5 {
+            margin-top: 3rem !important;
+        }
+        .mt-3 {
+            margin-top: 1rem !important;
+        }
+        .card-img-top {
+            object-fit: cover;
+            width: 100%;
+            height: 200px;
+        }
+        .card {
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        .user-info {
+            text-align: right;
+            margin-top: 10px;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- User Profile Section -->
+    <div class="user-info" style="text-align: right; padding: 10px;">
+        {% if user.is_authenticated %}
+            <p>User: {{ user.username }}</p>
+            <form action="{% url 'accounts:logout' %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" class="button">Logout</button>
+            </form>
+        {% endif %}
+    </div>
+    <div class="container text-center">
+        <h1 class="mt-5">Welcome to Our Website</h1>
+        {% if not user.is_authenticated %}
+        <a href="{% url 'accounts:signup' %}" class="button">Sign Up</a>
+        <a href="{% url 'accounts:login' %}" class="button">Login</a>
+        {% endif %}
+        <a href="{% url 'upload_feline' %}" class="button">I've found a pet</a>
+    </div>
+
+    <div class="container mt-5">
+        <h1 class="mb-4">Pets for Adoption</h1>
+        <div class="row">
+            {% for record in records %}
+                <div class="col-md-4">
+                    <div class="card">
+                        {% if record.photo %}
+                            <img src="{{ record.photo.url }}" class="card-img-top" alt="Photo of {{ record.name }}">
+                        {% else %}
+                            <img src="https://via.placeholder.com/300" class="card-img-top" alt="No photo available">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ record.name }}</h5>
+                            <p class="card-text">Click to see more details about {{ record.name }}.</p>
+                            <a href="{% url 'cat_detail' record.feline_id %}" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
