@@ -1,0 +1,143 @@
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	root /var/www/html;
+
+	# Add index.php to the list if you are using PHP
+#	index index.html index.htm index.nginx-debian.html;
+
+	server_name _;
+#	server_name *.thanhdevops.info;
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		#try_files $uri $uri/ =404;
+		proxy_pass http://13.49.68.114:8000;
+	        proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header X-Forwarded-Proto $scheme;
+		proxy_set_header X-Forwarded-Prefix /;
+	}
+
+	location /static/ {
+		alias /home/ubuntu/media/staticfiles/;
+	}
+        location /media/ {
+		alias /home/ubuntu/media/;
+	}
+}
+
+
+
+server {
+
+
+	root /var/www/html;
+
+	# Add index.php to the list if you are using PHP
+#	index index.html index.htm index.nginx-debian.html;
+    server_name www.thanhdevops.info thanhdevops.info; # managed by Certbot
+#	server_name thanhdevops.info;
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		#try_files $uri $uri/ =404;
+		proxy_pass http://13.49.68.114:8000;
+	        proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header X-Forwarded-Proto $scheme;
+		proxy_set_header X-Forwarded-Prefix /;
+	}
+        location /static/ {
+                alias /home/ubuntu/media/staticfiles/;
+        }
+        location /media/ {
+		alias /home/ubuntu/media/;
+	}
+
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/thanhdevops.info/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/thanhdevops.info/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
+}
+server {
+    if ($host = www.thanhdevops.info) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    if ($host = thanhdevops.info) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	listen 80 ;
+	listen [::]:80 ;
+    server_name www.thanhdevops.info thanhdevops.info;
+    return 404; # managed by Certbot
+
+
+
+
+}
+
+
+
+server {
+
+
+	root /var/www/html;
+
+    server_name catshelter.thanhdevops.info; # managed by Certbot
+#	server_name *.thanhdevops.info;
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		#try_files $uri $uri/ =404;
+		proxy_pass http://13.49.68.114:8000;
+	        proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header X-Forwarded-Proto $scheme;
+		proxy_set_header X-Forwarded-Prefix /;
+	}
+        location /static/ {
+                alias /home/ubuntu/media/staticfiles/;
+        }
+
+        location /media/ {
+		alias /home/ubuntu/media/;
+	}
+
+
+    listen [::]:443 ssl; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/catshelter.thanhdevops.info/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/catshelter.thanhdevops.info/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+}
+
+
+server {
+    if ($host = catshelter.thanhdevops.info) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	listen 80 ;
+	listen [::]:80 ;
+    server_name catshelter.thanhdevops.info;
+    return 404; # managed by Certbot
+
+
+}
