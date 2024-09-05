@@ -61,7 +61,7 @@ Deployment involves the following EC2 instances:
 
 - **EC2 Instance 1:** Nginx and PostgreSQL and Django storage
 - **EC2 Instance 2:** Django Server
-![Environment Setup](https://github.com/thanh-tran0106/catshelter/blob/main/environment_setup.drawio.png?raw=true)
+![Environment Setup](https://github.com/thanh-tran0106/thanhdevops/blob/master/environment_setup.drawio.png?raw=true)
 
 ## Application Structure
 
