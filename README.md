@@ -24,7 +24,7 @@ In future versions, the website will integrate advanced AI capabilities to:
 - **Virtualization:** UTM, AWS
 
 ## System Architecture
-![System Architecture](https://github.com/thanh-tran0106/catshelter/blob/main/system_architecture.drawio.png?raw=true))
+![System Architecture](https://github.com/thanh-tran0106/thanhdevops/blob/master/system_architecture.drawio.png?raw=true))
 
 1. **Frontend**
     - **Nginx**
@@ -67,7 +67,7 @@ Deployment involves the following EC2 instances:
 
 - **Application Architecture Diagram**
 - **User Flow Diagram**
-![User_Flow](https://github.com/thanh-tran0106/catshelter/blob/main/user_flow.drawio.png?raw=true)
+![User_Flow](https://github.com/thanh-tran0106/thanhdevops/blob/master/user_flow.drawio.png?raw=true)
 - **Entity-Relationship Diagram (ERD)**
 
 
@@ -76,7 +76,7 @@ Deployment involves the following EC2 instances:
 
 
 
-![Database_Diagram](https://github.com/thanh-tran0106/catshelter/blob/main/database_diagram.drawio-2.png?raw=true))
+![Database_Diagram](https://github.com/thanh-tran0106/thanhdevops/blob/master/database_diagram.drawio-2.png?raw=true))
 
  To learn more about the process of how I created the database, you can read my LinkedIn article at the link below.
 https://www.linkedin.com/pulse/postgresql-learning-diary-thanh-tran-qvwgf/?trackingId=sGVfI20nQ%2FuYyuIXnFkQHw%3D%3D
