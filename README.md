@@ -18,10 +18,12 @@ In future versions, the website will integrate advanced AI capabilities to:
 
 ## Technology Used
 
-- **Frontend:** Nginx, HTML, CSS, JavaScript
+- **Frontend:** HTML, CSS, JavaScript
 - **Backend:** Django
 - **Database:** PostgreSQL
 - **Virtualization:** UTM, AWS
+- **Networking & Web Server:** DNS, Nginx
+- **Containerization:** Docker, Docker-compose
 
 ## System Architecture
 ![System Architecture](https://github.com/thanh-tran0106/thanhdevops/blob/master/system_architecture.drawio.png?raw=true))
